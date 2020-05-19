@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alexander Garcia" />
+    <meta name="description" content="The Alexander Gallery - Artwork, sculptures, modern" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>The Alexander Gallery - Exhibitions</title>
+  </head>
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100">
+    <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
+      </div>
+      <nav class="block flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="index.html">Home</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
+      </nav>
+    </aside>
+    <main class="w-full h-full m-8">
+      <section class="">
+        <h2 class="text-2xl text-gray-700">Current Exhibitions</h2>
+        <!-- Show all 5 by-->
+        <div class="container flex flex-wrap justify-start my-4">
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-01.jpeg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Ragaa Mansour artwork">
+            <h3 class="text-gray-600 text-center">Ragaa Mansour</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-02.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Kim Hinkson artwork">
+            <h3 class="text-gray-600 text-center">Kim Hinkson</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-03.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Charmaine Nadine Osaerang artwork">
+            <h3 class="text-gray-600 text-center">Charmaine Nadine Osaerang</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-04.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Vanessa Gonzalez artwork">
+            <h3 class="text-gray-600 text-center">Vanessa Gonzalez</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-05.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Danny Johananoff artwork">
+            <h3 class="text-gray-600 text-center">Danny Johananoff</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-06.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Pitanius artwork">
+            <h3 class="text-gray-600 text-center">Pitanius</h3>
+          </article>
+          <article class="md:flex bg-white rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/exhibition-07.jpg" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Deeya Mirchandani artwork">
+            <h3 class="text-gray-600 text-center">Deeya Mirchandani</h3>
+          </article>
+        </div>
+      </section>
+      <section class="mt-16">
+        <h2 class="text-2xl text-gray-700">Past Exhibitions</h2>
+        <div class="container flex flex-wrap justify-start my-4">
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Vincent Van Gogh</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Jermaine Johnson</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Franklin von Helzun</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Banksy</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Asania del Toro</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Sally Mann</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Pennywise the Clown</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Pareen Tuti</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Ansel Adams</h3>
+          </article>
+          <article class="md:flex bg-gray-300 rounded-lg p-6 mr-4 mt-4 shadow">
+            <img src="./assets/images/empty.png" class="h-16 w-16 rounded-full mx-auto md:mx-0 md:mr-6" alt="Empty icon">
+            <h3 class="text-gray-600 text-center">Leonardo DaVinci</h3>
+          </article>
+        </div>
+      </section>
+      <footer class="text-center mt-4">
+        <small>The Alexander Gallery &copy; 2020</small>
+      </footer>
+    </main>
+  <script src="./assets/js/modernizr.custom.05819.js"></script>
+</body>
+</html>

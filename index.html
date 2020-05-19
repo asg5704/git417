@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alexander Garcia" />
+    <meta name="description" content="The Alexander Gallery - Fine-art Gallery" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>The Alexander Gallery - Home</title>
+  </head>
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100">
+    <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 flex-shrink-0">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
+      </div>
+      <nav class="block flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="index.html">Home</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
+      </nav>
+    </aside>
+    <main class="m-8 h-full w-full m-px-40">
+      <section class="max-w-4xl">
+        <h2 class="text-2xl text-gray-700">About The Alexander Gallery</h2>
+        <p>Founded in 1984 by an artist, The Alexander Gallery is a contemporary art gallery dedicated to the promotion of national and international artists seeking exposure to the New York art market. The Alexander Gallery connects artists with professionals, art collectors, and other artists to create an ever growing family dedicated to the world of fine art.</p>
+        <p class="mt-4">Collectors are provided with a broad range of original artworks through our fine art sales.</p>
+        <div class="my-4">
+          <img src="./assets/images/jessica-pamp.jpg" alt="Jessica Pamp art gallery" />
+        </div>
+        <div class="container flex justify-start mt-16">
+          <article class="w-1/4 h-full p-8 bg-gray-400 rounded focus:bg-gray-500 hover:bg-gray-500">
+            <h3>
+              <a class="text-md font-medium" href="./art.html">Upcoming Exhibition</a>
+            </h3>
+          </article>
+          <article class="w-1/4 h-full p-8 bg-gray-400 rounded focus:bg-gray-500 hover:bg-gray-500 ml-8">
+            <h3>
+              <a class="text-md font-medium" href="./tickets.html">Visitor Information</a>
+            </h3>
+          </article>
+          <article class="w-1/4 h-full p-8 bg-gray-400 rounded focus:bg-gray-500 hover:bg-gray-500 ml-8">
+            <h3>
+              <a class="text-md font-medium" href="#">Recently Sold</a>
+            </h3>
+          </article>
+        </div>
+      </section>
+      <footer class="text-center mt-4">
+        <small>The Alexander Gallery &copy; 2020</small>
+      </footer>
+    </main>
+  <script src="./assets/js/modernizr.custom.05819.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alexander Garcia" />
+    <meta name="description" content="The Alexander Gallery - Shopping cart" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="assets/css/styles.css" rel="stylesheet" type="text/css"/>
+    <title>The Alexander Gallery - Shopping Cart</title>
+  </head>
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100">
+    <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
+      </div>
+      <nav class="block flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="index.html">Home</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
+      </nav>
+    </aside>
+    <main class="w-full h-full my-8 ml-8">
+      <section class="max-w-4xl">
+        <h2 class="text-2xl text-gray-700">Our Collection</h2>
+        <p>The Alexander Gallery offers a unique collection of original contemporary fine art for sale by emerging and established artists. Each artwork is carefully selected our professional staff. The Alexander Gallery’s online gallery showcases art for sale in a wide variety of mediums, including paintings, sculpture, photography, drawings, mixed media, digital art, ceramics, fiber, works on paper, oils, acrylics, watercolors and limited edition prints. The range of styles and prices means that the site is well equipped to accommodate all tastes and the majority of budget requirements.</p>
+        <p class="mt-4">Artists who would like to be considered for inclusion should visit our portfolio  submission page. Collectors, consultants, art buyers, architects and interior designers are invited to visit The Alexander Gallery to view and buy from our online selection of contemporary art for sale.</p>
+      </section>
+      <section class="mt-8 -ml-8 pl-8 bg-black">
+        <h2 class="text-2xl text-gray-300 pt-8">Artwork for Sale</h2>
+        <section class="mt-6">
+          <h2 class="text-purple-200 uppercase my-2 tracking-wider">Photography</h2>
+          <div class="custom--container">
+            <div class="artwork">
+              <img class="object-cover" src="./assets/images/photos/Ada-Trillo-BarbedWireFences.jpg" alt="Ada Trillo - Barbed Wire Fences">
+            </div>
+            <div class="artwork">
+              <img class="object-cover" src="./assets/images/photos/Danny-Johananoff-PurpleBraid.jpg" alt="Danny Johananoff - Purple Braid">
+            </div>
+            <div class="artwork">
+              <img class="object-cover" src="./assets/images/photos/David-Strano-LeBaiser.jpg" alt="David Strano - Le Baiser">
+            </div>
+            <div class="artwork">
+              <img class="object-cover" src="./assets/images/photos/Harold-Ong-SkyIsBlue.jpg" alt="Harold Ong - Sky is Blue">
+            </div>
+            <div class="artwork">
+              <img class="object-cover" src="./assets/images/photos/Iswanto-Soerjanto-Cross.jpg" alt="Iswanto Soerjanto - Cross">
+            </div>
+          </div>
+        </section>
+        <section class="mt-6">
+          <h2 class="text-purple-200 uppercase my-2 tracking-wider">Sculptures/Ceramics</h2>
+          <div class="custom--container">
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Attila-Mata-Spiderweb.jpg" alt="Attila Mata - Spiderweb">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Attila-Mata-WomanWithBentShapes.jpg" alt="Attila Mata-WomanWithBentShapes">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Daniel-Randolph-Sculpture57.jpg" alt="Daniel Randolph-Sculpture57">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Nora-Pineda-10.jpg" alt="Nora Pineda-10">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Nora-Pineda-VillagePeople.jpg" alt="Nora Pineda-VillagePeople">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/sculptures/Sheetal-Shaw-GoldenLotus.jpg" alt="Sheetal Shaw-GoldenLotus">
+            </div>
+          </div>
+        </section>
+        <section class="mt-6">
+          <h2 class="text-purple-200 uppercase my-2 tracking-wider">Paintings</h2>
+          <div class="custom--container">
+            <div class="artwork">
+              <img src="./assets/images/paintins/Aila-Snickars-TheDance.jpeg" alt="Aila Snickars-The Dance">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Aila-Snickars-Us.jpeg" alt="Aila Snickars-Us">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Clara-de-Bobes-NinaFlorida.jpg" alt="Clara de Bobes-Nina Florida">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Doofan-Kwaghhool-TheMoments.jpg" alt="Doofan Kwaghhool-The Moments">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Jenny-Xu-Galaxy.jpg" alt="Jenny Xu-Galaxy">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Mabe-Micouleau-Abstract13.jpg" alt="Mabe Micouleau-Abstract 13">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Mabe-Micouleau-Abstract5.jpg" alt="Mabe Micouleau-Abstract 5">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Miguel-de-la-Cruz.jpg" alt="Miguel de la Cruz - The Curse">
+            </div>
+            <div class="artwork">
+              <img src="./assets/images/paintins/Ragaa-Mansour-OppressedWoman.jpeg" alt="Ragaa Mansour-Oppressed Woman">
+            </div>
+          </div>
+        </section>
+      </section>
+      <footer class="text-center mt-4">
+        <small>The Alexander Gallery &copy; 2020</small>
+      </footer>
+    </main>
+  <script src="./assets/js/modernizr.custom.05819.js"></script>
+</body>
+</html>
