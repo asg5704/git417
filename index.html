@@ -8,7 +8,11 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
     <title>The Alexander Gallery - Home</title>
   </head>
-  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100">
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100 relative">
+    <label class="absolute right-0 mr-8 top-0 mt-8">
+      Enable Dark Mode
+      <input type="checkbox" id="mode">
+    </label>
     <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 flex-shrink-0">
       <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
         <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
@@ -51,5 +55,36 @@
       </footer>
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
+  <script>
+    var modeFeature = document.getElementById('mode');
+    modeFeature.addEventListener('click', darkMode, false);
+
+    function darkMode(event) {
+      // Create variables for input, body, p, label, and footer tag
+      var enabled = event.target.checked;
+      var body = document.querySelector('body');
+      var text = document.querySelectorAll('p');
+      var label = document.querySelector('label');
+      var footer = document.querySelector('footer');
+
+      // If checkbox for dark mode is enabled add CSS classes
+      if(enabled) {
+        // Modifies CSS classes for the body, text (both), and footer
+        body.classList.remove('bg-gray-200');
+        body.classList.add('bg-gray-900');
+        text[0].classList.add('text-white');
+        text[1].classList.add('text-white');
+        label.classList.add('text-white')
+        footer.classList.add('text-white');
+      } else {
+        body.classList.add('bg-gray-200');
+        body.classList.remove('bg-gray-900');
+        text[0].classList.remove('text-white');
+        text[1].classList.remove('text-white');
+        label.classList.remove('text-white')
+        footer.classList.remove('text-white');
+      }
+    }
+  </script>
 </body>
 </html>
