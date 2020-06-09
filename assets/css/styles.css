@@ -7,3 +7,10 @@
   margin: 0 1rem 1rem 0;
   display: inline-block;
 }
+
+.custom--modal {
+  /* position: absolute;
+  top: 50%;
+  left: -50%;
+  transform: translateX(50%); */
+}

@@ -56,9 +56,7 @@
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
   <script>
-    var modeFeature = document.getElementById('mode');
-    modeFeature.addEventListener('click', darkMode, false);
-
+    // Function that enables/disables darkMode
     function darkMode(event) {
       // Create variables for input, body, p, label, and footer tag
       var enabled = event.target.checked;
@@ -84,6 +82,26 @@
         label.classList.remove('text-white')
         footer.classList.remove('text-white');
       }
+    }
+
+    // Adds addEventListeners to button
+    function addListeners() {
+      var modeFeature = document.getElementById('mode');
+      modeFeature.addEventListener('click', darkMode, false);
+    }
+
+    // Adds attachEvents to button
+    function attachEvents() {
+      var modeFeature = document.getElementById('mode');
+      modeFeature.attachEvent('onclick', darkMode, false);
+    }
+
+    // Checks if window has addEventListener property & sets value
+    if(window.addEventListener) {
+      window.addEventListener('load', addListeners, false);
+    } else {
+      // Else it uses attachEvent
+      window.attachEvent('onload', attachEvents);
     }
   </script>
 </body>
