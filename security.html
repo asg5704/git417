@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alexander Garcia" />
+    <meta name="description" content="The Alexander Gallery - Fine-art Gallery" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>The Alexander Gallery - Security</title>
+  </head>
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100 relative">
+    <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 flex-shrink-0">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
+      </div>
+      <nav class="block flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="index.html">Home</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="security.html">Web Safety</a>
+      </nav>
+    </aside>
+    <main class="m-8 h-full w-full m-px-40">
+      <section class="max-w-4xl">
+        <h2 class="font-bold text-2xl">Web Security</h2>
+        <p class="mb-8">Your browser has tons of information about your browser.  Some of this information are used by hackers and bad actors to exploit you.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          appName
+        </h4>
+        <p>It gives the name of the browser displaying the page &mdash; this could be potentially useful to a hacker as they can narrow down exploits to a single browser.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          appVersion
+        </h4>
+        <p>Gives the browser version displaying the page &mdash; this is very useful as it allows a bad actor insights on which browser version you are using and possibly use an exploit if you haven't updated your browser recently.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          geolocation
+        </h4>
+        <p>This gives access to the user's location based on the users permission settings &mdash; while this needs to be explicitly allowed/denied, this information could be used to target victims as it uses IP to determine latitude and longitudes of your location.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          onLine
+        </h4>
+        <p>Tells if the browser has a connection to the internet &mdash; this can sometimes throw false positives in virtualization software.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          platform
+        </h4>
+        <p>This tells the OS or Operating System of the computer &mdash; like the <code>appVersion</code> this can be used to exploit older Operating Systems like Windows XP.</p>
+        <h4 class="font-mono text-red-500 mt-4">
+          width
+        </h4>
+        <p>Displays the width of the screen</p>
+      </section>
+      <section class="mt-8 max-w-4xl">
+        <h2 class="font-black text-3xl">Here are some tips on how to stay safe on the web</h2>
+        <ol>
+          <li class="mt-6 p-6 border border-gray-300 bg-gray-200">
+            <a href="https://www.pcworld.com/article/243782/five_tips_to_avoid_malware_in_mobile_apps.html" class="text-lg text-gray-800 font-semibold">Be careful of what you download</a>
+            <p class="text-gray-700 max-w-3xl">Bad actors and cybercriminals will trick you into downloading software that will compromise your system and use your personal information for further destruction.</p>
+            <cite>
+              https://www.pcworld.com/article/243782/five_tips_to_avoid_malware_in_mobile_apps.html
+            </cite>
+            <p class="ml-6 mt-4 font-medium text-green-700">Summary &mdash; Stay safe by never downloading from sources you don't recognize including email attachments.</p>
+          </li>
+          <li class="mt-6 p-6 border border-gray-300 bg-gray-200">
+            <a href="https://staysafeonline.org/stay-safe-online/securing-key-accounts-devices/passwords-securing-accounts/" class="text-lg text-gray-800 font-semibold">Choose strong passwords</a>
+            <p class="text-gray-700 max-w-3xl">Passwords are the number one weak spot on the Internet.  People tend to choose easy passwords and cybercriminals can use bruteforcing to guess passwords.  </p>
+            <cite>
+              https://staysafeonline.org/stay-safe-online/securing-key-accounts-devices/passwords-securing-accounts/
+            </cite>
+            <p class="ml-6 mt-4 font-medium text-green-700">Summary &mdash; Use unique passwords for each site. Try to create passwords with more than 15 characters. Use a password management software like LastPass to keep credentials secure.</p>
+          </li>
+          <li class="mt-6 p-6 border border-gray-300 bg-gray-200">
+            <a href="https://edu.gcfglobal.org/en/internetsafety/how-to-avoid-malware/1/" class="text-lg text-gray-800 font-semibold">Keep your antivirus software up to date</a>
+            <p class="text-gray-700 max-w-3xl">Antivrius software cannot protect against every threat, but it can detect and remove most malware.</p>
+            <cite>
+              https://edu.gcfglobal.org/en/internetsafety/how-to-avoid-malware/1/
+            </cite>
+            <p class="ml-6 mt-4 font-medium text-green-700">Summary &mdash; Run antivirus and antimalware software regularly. Ensure you keep your software up-to-date especially operating systems (OS) and browser updates.</p>
+          </li>
+        </ol>
+      </section>
+      <footer class="text-center mt-4">
+        <small>The Alexander Gallery &copy; 2020</small>
+      </footer>
+    </main>
+  <script src="./assets/js/modernizr.custom.05819.js"></script>
+</body>
+</html>
