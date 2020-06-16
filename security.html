@@ -25,30 +25,30 @@
       <section class="max-w-4xl">
         <h2 class="font-bold text-2xl">Web Security</h2>
         <p class="mb-8">Your browser has tons of information about your browser.  Some of this information are used by hackers and bad actors to exploit you.</p>
-        <h4 class="font-mono text-red-500 mt-4">
+        <h4 class="font-mono text-red-500 mt-4" id="appName">
           appName
         </h4>
         <p>It gives the name of the browser displaying the page &mdash; this could be potentially useful to a hacker as they can narrow down exploits to a single browser.</p>
-        <h4 class="font-mono text-red-500 mt-4">
+        <h4 class="font-mono text-red-500 mt-4" id="appVersion">
           appVersion
         </h4>
         <p>Gives the browser version displaying the page &mdash; this is very useful as it allows a bad actor insights on which browser version you are using and possibly use an exploit if you haven't updated your browser recently.</p>
-        <h4 class="font-mono text-red-500 mt-4">
+        <h4 class="font-mono text-red-500 mt-4" id="geolocation">
           geolocation
         </h4>
         <p>This gives access to the user's location based on the users permission settings &mdash; while this needs to be explicitly allowed/denied, this information could be used to target victims as it uses IP to determine latitude and longitudes of your location.</p>
-        <h4 class="font-mono text-red-500 mt-4">
+        <h4 class="font-mono text-red-500 mt-4" id="onLine">
           onLine
         </h4>
         <p>Tells if the browser has a connection to the internet &mdash; this can sometimes throw false positives in virtualization software.</p>
-        <h4 class="font-mono text-red-500 mt-4">
+        <h4 class="font-mono text-red-500 mt-4" id="platform">
           platform
         </h4>
         <p>This tells the OS or Operating System of the computer &mdash; like the <code>appVersion</code> this can be used to exploit older Operating Systems like Windows XP.</p>
-        <h4 class="font-mono text-red-500 mt-4">
-          width
+        <h4 class="font-mono text-red-500 mt-4" id="userAgent">
+          userAgent
         </h4>
-        <p>Displays the width of the screen</p>
+        <p>String stored in the HTTP user-agent request header containing browser information and platform name.</p>
       </section>
       <section class="mt-8 max-w-4xl">
         <h2 class="font-black text-3xl">Here are some tips on how to stay safe on the web</h2>
@@ -84,5 +84,44 @@
       </footer>
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
+  <script>
+    // Array that contains the name of HTML element IDs, that also match the properties in `window.navigator`
+    var browserProperties = [
+      'appName',
+      'appVersion',
+      'geolocation',
+      'onLine',
+      'platform',
+      'userAgent'
+    ];
+
+    // function that creates the span to append to HTML element Ids
+    function createSpan(id) {
+      // creates a variable from the id
+      var item = document.getElementById(id);
+
+      // create a span
+      var span = document.createElement('span');
+
+      // Conditional to check if `geolocation`
+      if(id == 'geolocation') {
+        // if geolocation create span instead of showing Geolocation object
+        span.innerHTML = '&mdash; <span class="text-red-700">When using in the secure HTTPS, this would display your location in latitude & longitude using the getCurrentPosition method</span>';
+      } else {
+        // show the value of the property
+        span.innerHTML = '&mdash; <span class="text-red-700">' + window.navigator[id] + '</span>';
+      }
+
+      // appends the child to the selected elementId
+      item.appendChild(span);
+      // returns the element id (no side-effects)
+      return item;
+    }
+
+    // Loops through the browserProperties array and calls the createSpan method
+    for(var i = 0; i < browserProperties.length; i++) {
+      createSpan(browserProperties[i]);
+    }
+  </script>
 </body>
 </html>
