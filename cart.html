@@ -32,12 +32,27 @@
         <h2 class="text-2xl text-gray-700">Artwork Interest Form</h2>
         <form class="max-w-lg" id="form">
           <div class="mb-4 mt-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name* (required)</label>
             <input id="formName" type="text" name="name" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
           </div>
           <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email* (required)</label>
             <input id="formEmail" type="email" name="email" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
+          </div>
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="artType">Category* (required)</label>
+            <select id="artType" name="artType" class="bg-white rounded-lg py-2 px-4 block w-full border border-gray-300 focus:outline-none focus:shadow-outline">
+              <option value="empty">- Please select an option -</option>
+              <option value="photography">Photography</option>
+              <option value="paintings">Paintings</option>
+              <option value="sculptures">Sculptures</option>
+              <option value="ceramics">Ceramics</option>
+              <option value="all">All Artwork</option>
+            </select>
+          </div>
+          <div class="mb-6 flex flex-row-reverse items-center justify-end">
+            <label class="block text-gray-700 text-sm font-bold ml-2" for="newsletter">Sign up for our art showcase newsletter</label>
+            <input id="wantsNewsletter" type="checkbox" name="newsletter" class="h-4 w-4"/>
           </div>
           <div class="flex items-center justify-end">
             <button id="submitBtn" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -131,6 +146,9 @@
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
   <script>
+    // Keeps track of how many errors
+    var errorCount = 0;
+
     // Function used to validate the form
     function validateForm(event) {
       // Prevents the default behavior of a button within a form tag which refreshes the page
@@ -144,6 +162,7 @@
         // Creates variables to grab the values of our inputs
         var formName = document.getElementById('formName');
         var formEmail = document.getElementById('formEmail');
+        var formOptions = document.getElementById('artType');
 
         // Checks if both values are blank
         if(formName.value == '' && formEmail.value == '') {
@@ -160,6 +179,12 @@
           throw 'Email field cannot be left blank';
         }
 
+        console.log('formoptions = ', formOptions.selectedOptions[0].value);
+        // Checks if formEmail value is blank
+        if(formOptions.selectedOptions[0].value == 'empty') {
+          throw 'Category field must be selected';
+        }
+
         // Uses built-in method checkValidity to check for valid email
         if(!formEmail.checkValidity()) {
           throw 'Email is not valid';
@@ -167,26 +192,36 @@
       } catch(err) {
         // Sets isFormValid to true because there are errors
         isFormInvalid = true;
+        // Grab the div [role='alert'] if there is one and set it variable errorDiv
+        var errorDiv = document.querySelector('div [role="alert"]');
+        // If the error div exists/truthy remove it so we can add our success modal
+        if(errorDiv) {
+          // Remove the error div from the NodeList
+          errorDiv.remove();
+        }
 
         // Using the results from createErrorModal appends child element to the form
-        form.appendChild(createErrorModal(err));
-        // Calls the createTimeout method
-        createTimeout(2500);
+        if(isFormInvalid) {
+          form.appendChild(createErrorModal(err));
+        }
+        return;
       } finally {
         // Appends success modal if form was successfully validated
         if(!isFormInvalid) {
-          form.appendChild(createSuccessModal());
-          createTimeout(5000);
+          // Grab the selected option label set it to artwork variable to pass as a parameter for the success modal
+          var artwork = formOptions.selectedOptions[0].label
+
+          // Grab the div [role='alert'] if there is one and set it variable errorDiv
+          var errorDiv = document.querySelector('div [role="alert"]');
+          // If the error div exists/truthy remove it so we can add our success modal
+          if(errorDiv) {
+            // Remove the error div from the NodeList
+            errorDiv.remove();
+          }
+          // Append to the form a success modal with the artwork label
+          form.appendChild(createSuccessModal(artwork));
         }
       }
-    }
-
-    // Function that sets a timeout for the appearance of a modal
-    function createTimeout(seconds) {
-      setTimeout(function() {
-        document.querySelector('div[role="alert"]').remove();
-        isFormInvalid = false;
-      }, seconds)
     }
 
     // Function that creates an error modal
@@ -197,13 +232,13 @@
     }
 
     // Function that creates a success modal
-    function createSuccessModal() {
+    function createSuccessModal(type) {
       var div = document.createElement('div');
       div.innerHTML = '<div class="mt-8 bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 shadow-md" role="alert">' + '<div class="flex">' +
           '<div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>' +
           '<div>' +
             '<p class="font-bold">Successfully submitted</p>' +
-            '<p class="text-sm">We will contact you in 2-3 business days.</p>' +
+            '<p class="text-sm">We will contact you in 2-3 business days about your interest in: <strong>' + type + '</strong></p>' +
           '</div>' +
         '</div>' +
       '</div>';
