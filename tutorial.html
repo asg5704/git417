@@ -86,17 +86,18 @@
               // Step 2. Utilizing `ourString` with a period `ourString.` in our
               // Chrome Developer Tools we can see a whole bunch of neat functions
               // called methods.  Let's try using the .toUpperCase method.
-              ourString.toUpperCase()
+              ourString.toUpperCase();
               // Output: This will log -> 'HELLO WORLD';
 
               // Step 3. Let's take a look at some other methods.
-              ourString.repeat(3)  // Output: 'hello worldhello worldhello world'
+              ourString.repeat(3);
+              // Output: 'hello worldhello worldhello world'
             </code>
           </pre>
-          <p class="mt-4">Let's take a look at another example.</p>
+          <p class="mt-4">Let's take a look at a real-world use case: a scroll to top button.</p>
           <pre>
             <code>
-            // First we'll look at & break down `window.scrollBy`
+            // First we'll look at & break down `window.scrollTo`
             /* The method is defined like below
             ** In one way we can pass the x and y-coordinate as two separate parameters
                window.scrollTo(x-coord, y-coord);
@@ -104,27 +105,38 @@
                In another way, the scrollTo also takes a single object as a parameter
                window.scrollTo(options)
             */
-
             // We know we have either 2 parameters (xCoordinate, yCoordinate)
+            </code>
+            <code class="html">
             // Let's create a scroll to top button
             // Step 1. Create a button with an id of scrollToTop in your HTML
+            <....>
             &lt;button id="scrollToTop"&gt;Scroll to Top&lt;/button&gt;
-
-            // Step 2. Select the button and add an addEventListener
+            <....>
+            </code>
+            <code>
+            // Step 2. Select the button by id
             document.getElementById('scrollToTop')
+              // add an addEventListener for a click event
               .addEventListener('click', function() {
                 // X-coordinate is the first parameter
                 // Y-coordinate is the second parameter
+
+                // Call the method/function with the parameters
                 window.scrollTo(0, 0);
 
             }, false)
 
-            // This absolutely works as instead but the animation feels too fast
+            // This absolutely works as intended but the animation feels too fast
             // Let's try it with using an Object as our parameter
             // Step 3. Select the button and add an addEventListener
             document.getElementById('scrollToTop')
               .addEventListener('click', function() {
+
+                // create an options variable (look at MDN for available options)
                 var options = { top: 0, behavior: 'smooth' };
+
+                // Call the method/function
                 window.scrollTo(options);
 
             }, false)
@@ -142,6 +154,7 @@
         <p>Hmm.. that seems like a lot. We will break it down into small chunks and use some built-in functions/methods to create our function.</p>
         <pre>
           <code>
+            // This is our array of students
             var studentList = [
               {
                 name: 'Bob Jones',
@@ -157,48 +170,77 @@
               }
             ];
 
+            // This is the function we will use to get the student's
+            // quiz average
             function getStudentQuizAverage(student) {
+              // Step 1. Create variables to store student name & grades array
               // First we grab the students name
               var name = student.name;
               // Next we grab the students grades
               var grades = student.grades
 
-              // We happened to look on MDN under JavaScript Math and
+              // Step 2. We happened to look on MDN under JavaScript Math and
               // found a Math.min() method that takes integer parameters
               // and finds the lowest one.
               var worstQuizGrade = Math.min(grades[0], grades[1], grades[2]);
 
-              // We create a new array called `newGrades` to
+              // Step 3. We create a new array called `newGrades` to
               // ensure we don't mess with the old grades just
               // in case the teacher changes their mind later on.
               var newGrades = [];
 
-              // We will loop through all of our grades and
+              // Step 4. We will loop through all of our grades and
               // if we find don't find our worstQuizGrade
               // we'll add it to our newGrades array
               for(var i = 0; i < grades.length; i++) {
 
-                // We will check if the grades at the index match
+                // Step 5. We will check if the grades at the index match
                 // our worstQuizGrade.  If it doesn't match, we
-                // will add that grade to our newGrade array.
+                // will add that grade to our newGrade array using .push
                 if(grades[i] != worstQuizGrade) {
                   newGrades.push(grades[i]);
                 }
               }
 
-              // Here we will determine our finalGrade which is just
+              // Step. 6 Here we will determine our finalGrade which is just
               // The newGrades at each index divided by 2
               var finalGrade = (newGrades[0] + newGrades[1]) / 2;
 
-              // Lastly we print out the finalGrade
+              // Step 7. We print out the finalGrade to see in the console
               console.log(name + ' Quiz score Average: ' + finalGrade + '%\n')
+
+              // Step 8. We return the finalGrade to add to our new array
+              return name + ' Quiz score Average: ' + finalGrade + '%\n';
             }
 
-            // Now we can loop through the studentList and print out the grade
+            // Step 9. Now we can loop through the studentList and print out the grade
             // for each student by calling the getStudentQuizAverage
             for(var i = 0; i < studentList.length; i++) {
               getStudentQuizAverage(studentList[i])
             }
+            // Output =>
+            // Bob Jones Quiz score Average: 85%
+            // Jim James Quiz score Average: 95%
+            // Eli Jones Quiz score Average: 95%
+
+
+            // ** Finally. If we want to create a new updated list of student
+            // quiz grades we can first create a variable `updatedStudentList`
+            // and loop through the old student list and push the values there.
+            var updatedStudentList = []
+            for(var i = 0; i < studentList.length; i++) {
+              // For clarity we can break this down
+              // updatedList.push(value) => Pushes/Adds the value to the end of an array
+              // getStudentQuizAverage(student) => Returns the `Student name Quiz Score..` string
+              updatedStudentList.push(getStudentQuizAverage(studentList[i]));
+            }
+            // Output =>
+            // Bob Jones Quiz score Average: 85%
+            // Jim James Quiz score Average: 95%
+            // Eli Jones Quiz score Average: 95%
+
+            // When we log
+
           </code>
         </pre>
       </div>
