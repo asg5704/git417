@@ -227,11 +227,12 @@
             // ** Finally. If we want to create a new updated list of student
             // quiz grades we can first create a variable `updatedStudentList`
             // and loop through the old student list and push the values there.
-            var updatedStudentList = []
+            var updatedStudentList = [];
             for(var i = 0; i < studentList.length; i++) {
               // For clarity we can break this down
               // updatedList.push(value) => Pushes/Adds the value to the end of an array
               // getStudentQuizAverage(student) => Returns the `Student name Quiz Score..` string
+
               updatedStudentList.push(getStudentQuizAverage(studentList[i]));
             }
             // Output =>
@@ -239,8 +240,9 @@
             // Jim James Quiz score Average: 95%
             // Eli Jones Quiz score Average: 95%
 
-            // When we log
-
+            console.log(updatedStudentList);
+            // Output =>
+            // [Bob Jones Quiz score Average: 85%, Jim James Quiz score Average: 95%,Eli Jones Quiz score Average: 95%]
           </code>
         </pre>
       </div>
