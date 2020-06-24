@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alexander Garcia" />
+    <meta name="description" content="The Alexander Gallery - Fine-art Gallery" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>The Alexander Gallery - Home</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+  </head>
+  <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100 relative">
+    <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 flex-shrink-0">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="index.html" class="text-lg font-semibold tracking-widest text-gray-200 uppercase rounded-lg focus:outline-none focus:shadow-outline">The Alexander Gallery</a>
+      </div>
+      <nav class="block flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="index.html">Home</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="security.html">Web Safety</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tutorial.html">JavaScript Tutorial</a>
+      </nav>
+    </aside>
+    <main class="m-8 h-full w-full m-px-40">
+      <section class="max-w-4xl">
+        <h2 class="text-2xl text-gray-700">JavaScript Tutorial</h2>
+        <p>In this tutorial, I will show you how you how to create our own JavaScript functions as well as utilize some built-in functions (called methods).  One of the best places to learn the capabilities of JavaScript and the web is the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">Mozilla Development Network</a>(MDN).  It provides a plethora amount of knowledge about Web APIs and how to use mostly every built-in function in JavaScript.</p>
+        <div class="container flex justify-between mt-16 flex-col">
+          <h3 class="font-black text-2xl">Introduction to Functions</h3>
+          <p>Functions are the building blocks of JavaScript.  Simply put they are procedures that perform a task. But let's breakdown even further how we perceive a function.</p>
+          <pre>
+            <code class="language-javascript">
+              /* Lets Breakdown how to create our very first function */
+
+              function name(parameters) {
+                statements;
+              }
+            </code>
+          </pre>
+          <ul>
+            <li><strong>function</strong> &mdash; This is a JavaScript reserved keyword used to ensure JavaScript knows we want to create a function.</li>
+            <li><strong>name</strong> &mdash; This is the name we determine that describes what the function is doing.</li>
+            <li><strong>parameters</strong> &mdash; There are unlimited amount of parameters or <strong>arguments*</strong> you can have in your function.  These are the name of the values you pass to your function. *arguments is also a reserved word in JavaScript</li>
+            <li><strong>statements</strong> &mdash; Statements are the steps or procedures your JavaScript code will run.</li>
+          </ul>
+          <p class="mt-4">I know what you're thinking... that's cool but how do I use it.  Let's take a look at how we can write a function to multiply three numbers together.</p>
+          <pre>
+            <code>
+              // Previous way of multiplying numbers together
+              var total = 5 * 35 * 2;
+
+              // Step 1. Create the multiply function
+              function multiply(x, y, z) {
+                var total = x * y * z;
+                console.log('Total: ', total);
+                return total;
+              }
+
+              // Now when we call the multiply function
+              multiply(5, 35, 2);
+              // This will log -> Total: 350
+
+              // How is this helpful you might think? This allows our function to be more dynamic
+              // We could also call multiple iterations of our function
+              multiply(1, 1, 1)
+              // This will log -> Total: 1
+              multiply(2, 10, 2)
+              // This will log -> Total: 40
+
+              // As a default if there is no `return` in a function it will automatically return undefined.
+              // So if we want to be able to use these values we must specify a value to return
+            </code>
+          </pre>
+        </div>
+        <div class="container flex flex-col justify-start mt-8">
+          <h3 class="font-black text-2xl">Let's look at some of JavaScripts built-in functions</h3>
+          <p>I highly encourage you to take a look at the MDN website to see more ways to interact with these functions.  We're going to take a look at a few simple functions on the DOM.</p>
+          <pre class="mt-4">
+            <code class="language-javascript">
+              // First let's take a look at an easy one for our String data type
+              // Step 1. Create a variable called `ourString` and give it a value
+              var ourString = "hello world";
+
+              // Step 2. Utilizing `ourString` with a period `ourString.` in our
+              // Chrome Developer Tools we can see a whole bunch of neat functions
+              // called methods.  Let's try using the .toUpperCase method.
+              ourString.toUpperCase()
+              // Output: This will log -> 'HELLO WORLD';
+
+              // Step 3. Let's take a look at some other methods.
+              ourString.repeat(3)  // Output: 'hello worldhello worldhello world'
+            </code>
+          </pre>
+          <p class="mt-4">Let's take a look at another example.</p>
+          <pre>
+            <code>
+            // First we'll look at & break down `window.scrollBy`
+            /* The method is defined like below
+            ** In one way we can pass the x and y-coordinate as two separate parameters
+               window.scrollTo(x-coord, y-coord);
+
+               In another way, the scrollTo also takes a single object as a parameter
+               window.scrollTo(options)
+            */
+
+            // We know we have either 2 parameters (xCoordinate, yCoordinate)
+            // Let's create a scroll to top button
+            // Step 1. Create a button with an id of scrollToTop in your HTML
+            &lt;button id="scrollToTop"&gt;Scroll to Top&lt;/button&gt;
+
+            // Step 2. Select the button and add an addEventListener
+            document.getElementById('scrollToTop')
+              .addEventListener('click', function() {
+                // X-coordinate is the first parameter
+                // Y-coordinate is the second parameter
+                window.scrollTo(0, 0);
+
+            }, false)
+
+            // This absolutely works as instead but the animation feels too fast
+            // Let's try it with using an Object as our parameter
+            // Step 3. Select the button and add an addEventListener
+            document.getElementById('scrollToTop')
+              .addEventListener('click', function() {
+                var options = { top: 0, behavior: 'smooth' };
+                window.scrollTo(options);
+
+            }, false)
+
+            // Step 4. Click on the button and watch it animate
+            // There is a sample scroll to top button at the bottom of this page
+            </code>
+          </pre>
+        </div>
+      </section>
+      <div class="container flex flex-col justify-start mt-8">
+        <h3 class="font-black text-2xl">Let's build our own</h3>
+        <p>Problem: A teacher tasks you, a Teaching Assistant, with dropping the lowest quiz grade and getting the average of the top two quiz scores.</p>
+        <p>Task: Create a function that drops the lowest score and returns the average of the top two quiz scores.</p>
+        <p>Hmm.. that seems like a lot. We will break it down into small chunks and use some built-in functions/methods to create our function.</p>
+        <pre>
+          <code>
+            var studentList = [
+              {
+                name: 'Bob Jones',
+                grades: [75, 80, 90]
+              },
+              {
+                name: 'Jim James',
+                grades: [55, 100, 90]
+              },
+              {
+                name: 'Eli Jones',
+                grades: [75, 100, 90]
+              }
+            ];
+
+            function getStudentQuizAverage(student) {
+              // First we grab the students name
+              var name = student.name;
+              // Next we grab the students grades
+              var grades = student.grades
+
+              // We happened to look on MDN under JavaScript Math and
+              // found a Math.min() method that takes integer parameters
+              // and finds the lowest one.
+              var worstQuizGrade = Math.min(grades[0], grades[1], grades[2]);
+
+              // We create a new array called `newGrades` to
+              // ensure we don't mess with the old grades just
+              // in case the teacher changes their mind later on.
+              var newGrades = [];
+
+              // We will loop through all of our grades and
+              // if we find don't find our worstQuizGrade
+              // we'll add it to our newGrades array
+              for(var i = 0; i < grades.length; i++) {
+
+                // We will check if the grades at the index match
+                // our worstQuizGrade.  If it doesn't match, we
+                // will add that grade to our newGrade array.
+                if(grades[i] != worstQuizGrade) {
+                  newGrades.push(grades[i]);
+                }
+              }
+
+              // Here we will determine our finalGrade which is just
+              // The newGrades at each index divided by 2
+              var finalGrade = (newGrades[0] + newGrades[1]) / 2;
+
+              // Lastly we print out the finalGrade
+              console.log(name + ' Quiz score Average: ' + finalGrade + '%\n')
+            }
+
+            // Now we can loop through the studentList and print out the grade
+            // for each student by calling the getStudentQuizAverage
+            for(var i = 0; i < studentList.length; i++) {
+              getStudentQuizAverage(studentList[i])
+            }
+          </code>
+        </pre>
+      </div>
+      <div class="w-full h-screen flex flex-col justify-end">
+        <button id="scrollToTop">Scroll to Top</button>
+      </div>
+      <footer class="text-center mt-4">
+        <small>The Alexander Gallery &copy; 2020</small>
+      </footer>
+    </main>
+  <script src="./assets/js/modernizr.custom.05819.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+    document.getElementById('scrollToTop').addEventListener('click', function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }, false)
+  </script>
+</body>
+</html>
