@@ -29,7 +29,8 @@
         <p class="mt-4">Artists who would like to be considered for inclusion should visit our portfolio  submission page. Collectors, consultants, art buyers, architects and interior designers are invited to visit The Alexander Gallery to view and buy from our online selection of contemporary art for sale.</p>
       </section>
       <section class="max-w-4xl mt-8 mb-16">
-        <h2 class="text-2xl text-gray-700">Artwork Interest Form</h2>
+        <h2 class="text-2xl text-gray-700">Artwork Raffle for Charity</h2>
+        <p></p>
         <form class="max-w-lg" id="form">
           <div class="mb-4 mt-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name* (required)</label>
@@ -40,19 +41,8 @@
             <input id="formEmail" type="email" name="email" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"/>
           </div>
           <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="artType">Category* (required)</label>
-            <select id="artType" name="artType" class="bg-white rounded-lg py-2 px-4 block w-full border border-gray-300 focus:outline-none focus:shadow-outline">
-              <option value="empty">- Please select an option -</option>
-              <option value="photography">Photography</option>
-              <option value="paintings">Paintings</option>
-              <option value="sculptures">Sculptures</option>
-              <option value="ceramics">Ceramics</option>
-              <option value="all">All Artwork</option>
-            </select>
-          </div>
-          <div class="mb-6 flex flex-row-reverse items-center justify-end">
-            <label class="block text-gray-700 text-sm font-bold ml-2" for="newsletter">Sign up for our art showcase newsletter</label>
-            <input id="wantsNewsletter" type="checkbox" name="newsletter" class="h-4 w-4"/>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="artType">Phone* (required)</label>
+            <input id="formPhone" type="tel" name="phone" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" />
           </div>
           <div class="flex items-center justify-end">
             <button id="submitBtn" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -60,7 +50,19 @@
             </button>
           </div>
         </form>
-
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 py-4 rounded-bl-lg rounded-br-lg mt-16">
+          <h2>Raffle</h2>
+          <table class="min-w-full">
+            <thead>
+              <tr>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Name</th>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Phone</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
       </section>
       <section class="mt-8 -ml-8 pl-8 bg-black">
         <h2 class="text-2xl text-gray-300 pt-8">Artwork for Sale</h2>
@@ -145,125 +147,120 @@
       </footer>
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
+  <script src="./assets/js/cart.js"></script>
   <script>
-    // Keeps track of how many errors
-    var errorCount = 0;
+    // Custom object/class RaffleEntry
+    // constructor are the name, email, and phone values
+    function RaffleEntry(name, email, phone) {
+      this.name = name;
+      this.email = email;
+      this.phone = phone;
+    }
 
-    // Function used to validate the form
-    function validateForm(event) {
-      // Prevents the default behavior of a button within a form tag which refreshes the page
-      event.preventDefault();
-      // Creates variables for code reuse
-      var isFormInvalid = false;
-      var form = document.getElementById('form');
+    // Creates a RaffleEntry
+    function createRaffleEntry() {
+      // Variables for the current values in the form inputs
+      var currentName = document.getElementById('formName').value;
+      var currentEmail = document.getElementById('formEmail').value;
+      var currentPhone = document.getElementById('formPhone').value;
 
-      // Try/catch handles errors
-      try {
-        // Creates variables to grab the values of our inputs
-        var formName = document.getElementById('formName');
-        var formEmail = document.getElementById('formEmail');
-        var formOptions = document.getElementById('artType');
+      // Creates a new instantiation of the RaffleEntry class/object
+      var entry = new RaffleEntry(currentName, currentEmail, currentPhone);
 
-        // Checks if both values are blank
-        if(formName.value == '' && formEmail.value == '') {
-          throw 'Fields cannot be left blank';
-        }
+      // Use addEntryToTable function to add entries to global entries variable
+      addEntryToTable(entry);
+    }
 
-        // Checks if formName value is blank
-        if(formName.value == '') {
-          throw 'Name field cannot be left blank';
-        }
-
-        // Checks if formEmail value is blank
-        if(formEmail.value == '') {
-          throw 'Email field cannot be left blank';
-        }
-
-        console.log('formoptions = ', formOptions.selectedOptions[0].value);
-        // Checks if formEmail value is blank
-        if(formOptions.selectedOptions[0].value == 'empty') {
-          throw 'Category field must be selected';
-        }
-
-        // Uses built-in method checkValidity to check for valid email
-        if(!formEmail.checkValidity()) {
-          throw 'Email is not valid';
-        }
-      } catch(err) {
-        // Sets isFormValid to true because there are errors
-        isFormInvalid = true;
-        // Grab the div [role='alert'] if there is one and set it variable errorDiv
-        var errorDiv = document.querySelector('div [role="alert"]');
-        // If the error div exists/truthy remove it so we can add our success modal
-        if(errorDiv) {
-          // Remove the error div from the NodeList
-          errorDiv.remove();
-        }
-
-        // Using the results from createErrorModal appends child element to the form
-        if(isFormInvalid) {
-          form.appendChild(createErrorModal(err));
-        }
+    // Takes an entry parameter and adds it to the end of the global entries variable
+    function addEntryToTable(raffleEntry) {
+      if(window.hasErrors) {
         return;
-      } finally {
-        // Appends success modal if form was successfully validated
-        if(!isFormInvalid) {
-          // Grab the selected option label set it to artwork variable to pass as a parameter for the success modal
-          var artwork = formOptions.selectedOptions[0].label
-
-          // Grab the div [role='alert'] if there is one and set it variable errorDiv
-          var errorDiv = document.querySelector('div [role="alert"]');
-          // If the error div exists/truthy remove it so we can add our success modal
-          if(errorDiv) {
-            // Remove the error div from the NodeList
-            errorDiv.remove();
-          }
-          // Append to the form a success modal with the artwork label
-          form.appendChild(createSuccessModal(artwork));
-        }
       }
+      var tableBody = document.getElementById('tableBody');
+
+      // If the first child in the #tableBody has an innerText of 'No entries' remove that node and replace with raffle entry
+      if(tableBody.children[0].innerText == 'No entries...') {
+        tableBody.removeChild(tableBody.children[0]);
+      }
+
+      // Creates a table row <tr> and adds classes for styling
+      var tableRow = document.createElement('tr');
+          tableRow.className = 'border-b border-gray-400';
+
+      // Sets a variable from the length/size of all our properties in our custom object (RaffleEntry)
+      var raffleEntryPropertyCount = Object.keys(raffleEntry).length;
+
+      // Loop through each property (name, email, phone) in the custom object of RaffleEntry
+      for(var i = 0; i < raffleEntryPropertyCount; i++) {
+        // Create a table data <td> and adds classes for styling
+        var tableData = document.createElement('td');
+            tableData.className = 'px-6 py-4 whitespace-no-wrap';
+              
+        // Create an inner div inside the table data cell and add classes for styling
+        var innerDiv = document.createElement('div');
+            innerDiv.className = 'flex items-center text-sm leading-text-gray-800';
+        
+        // Gets the value of our custom object RaffleEntry at the index and sets it to variable value
+        var value = Object.values(raffleEntry)[i];
+
+        // Set the innerText to our value
+        innerDiv.innerText = value;
+
+        // Append the current container <div> to the <td>
+        tableData.appendChild(innerDiv);
+
+        // Append the current <td> to the row for each iteration
+        tableRow.appendChild(tableData)
+      }
+
+      // Lastly append all of our <tr> to the <tbody>
+      tableBody.appendChild(tableRow);
     }
 
-    // Function that creates an error modal
-    function createErrorModal(type) {
-      var div = document.createElement('div');
-      div.innerHTML = '<div role="alert" class="shadow max-w-lg mt-8 transition transform duration-500">' + '<h2 class="bg-red-500 text-white font-bold rounded-t px-4 py-2">Error</h2>' + '<div class="border border-t-0 border-red-400 rounded-b bg-red-100 text-red-700 py-2 px-4"><p>' + type + '</p>' + '</div>' + '</div>';
-      return div;
-    }
+  // Adds button event listener
+  function addListeners() {
+    // Create variable for submit button
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener('click', createRaffleEntry, false);
+  }
 
-    // Function that creates a success modal
-    function createSuccessModal(type) {
-      var div = document.createElement('div');
-      div.innerHTML = '<div class="mt-8 bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 shadow-md" role="alert">' + '<div class="flex">' +
-          '<div class="py-1"><svg class="fill-current h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>' +
-          '<div>' +
-            '<p class="font-bold">Successfully submitted</p>' +
-            '<p class="text-sm">We will contact you in 2-3 business days about your interest in: <strong>' + type + '</strong></p>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-      return div;
-    }
+  // Adds button attach
+  function attachEvents() {
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.attachEvent('onclick', createRaffleEntry);
+  }
 
-    // Adds button event listener
-    function addListeners() {
-      // Create variable for submit button
-      var submitBtn = document.getElementById('submitBtn');
-      submitBtn.addEventListener('click', validateForm, false);
-    }
+  // A function that displays No entries upon load so we don't have an ugly/empty table
+  function checkDisplay() {
+    // Grabs the current #tableBody node
+    var tbody = document.getElementById('tableBody');
 
-    // Adds button attach
-    function attachEvents() {
-      var submitBtn = document.getElementById('submitBtn');
-      submitBtn.attachEvent('onclick', validateForm);
+    // Check if the tbody children NodeList is less than 1
+    if(tbody.children.length < 1) {
+      // Creates a table row with No entries innerHTML
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td colspan="3" class="text-center">No entries...</td>';
+      //Appends the <tr> to the <tbody>
+      tbody.appendChild(tr)
     }
+  }
 
-    // Add event listeners to button on load if not IE8
-    if(window.addEventListener) {
-      window.addEventListener('load', addListeners, false);
-    } else {
-      window.attachEvent('onload', attachEvents);
-    }
+  // Add event listeners to button on load if not IE8
+  if(window.addEventListener) {
+    window.addEventListener('load', function() {
+      // Add event listners function
+      addListeners()
+      // Also runs the checkDisplay function on load
+      checkDisplay()
+    }, false);
+  } else {
+    window.attachEvent('onload', function() {
+      // Attachs the attachEvents for IE8 support
+      attachEvents()
+      // Also runs the checkDisplay function in IE8
+      checkDisplay()
+    });
+  }
   </script>
 </body>
 </html>
