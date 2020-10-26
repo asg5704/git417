@@ -30,7 +30,6 @@
       </section>
       <section class="max-w-4xl mt-8 mb-16">
         <h2 class="text-2xl text-gray-700">Artwork Raffle for Charity</h2>
-        <p></p>
         <form class="max-w-lg" id="form">
           <div class="mb-4 mt-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name* (required)</label>
@@ -43,6 +42,42 @@
           <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="artType">Phone* (required)</label>
             <input id="formPhone" type="tel" name="phone" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" />
+          </div>
+          <div class="mb-6" style="width: 1000px;">
+            <span class="block text-gray-700 text-sm font-bold mb-2">Pieces interested in</span>
+            <span class="block text-gray-600 text-xs font-normal">* If no pieces are selected, one will be chosen at random for you.</span>
+            <div class="grid grid-cols-5 grid-rows-1 gap-6 mt-8">
+              <label for="artwork1" class="col-auto">
+                <img src="./assets/images/paintins/Aila-Snickars-Us.jpeg" alt="Us by Aila Snickars" class="block w-full" />
+                <span class="block text-gray-600">Us by Aila Snickars</span>
+                <span>Estimated at <strong>$10k</strong></span>
+                <input type="checkbox" name="charityPieces" value="Us" />
+              </label>
+              <label for="artwork2" class="col-auto">
+                <img src="./assets/images/photos/Danny-Johananoff-PurpleBraid.jpg" alt="Purple Braid by Danny J." class="block w-full" />
+                <span class="block text-gray-600">Purple Braids by Danny J.</span>
+                <span>Estimated at <strong>$50k</strong></span>
+                <input type="checkbox" name="charityPieces" value="Purple Braid" />
+              </label>
+              <label for="artwork3" class="col-auto">
+                <img src="./assets/images/paintins/Jenny-Xu-Galaxy.jpg" alt="" class="block w-full" />
+                <span class="block text-gray-600">Galaxy by Jenny Xu</span>
+                <span>Estimated at <strong>$71k</strong></span>
+                <input type="checkbox" name="charityPieces" value="Galaxy"/>
+              </label>
+              <label for="artwork4" class="col-auto">
+                <img src="./assets/images/paintins/Doofan-Kwaghhool-TheMoments.jpg" alt="The Moments" class="block w-full" />
+                <span class="block text-gray-600">The Moments by Doofan K.</span>
+                <span>Estimated at <strong>$2m</strong></span>
+                <input type="checkbox" name="charityPieces" value="The Moments"/>
+              </label>
+              <label for="artwork5" class="col-auto">
+                <img src="./assets/images/photos/Harold-Ong-SkyIsBlue.jpg" alt="" class="block w-full" />
+                <span class="block text-gray-600">Sky is Blue by Harold Ong</span>
+                <span>Estimated at <strong>$22k</strong></span>
+                <input type="checkbox" name="charityPieces" value="Sky is Blue" />
+              </label>
+            </div>
           </div>
           <div class="flex items-center justify-end">
             <button id="submitBtn" class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
@@ -58,6 +93,7 @@
                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Name</th>
                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Email</th>
                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Phone</th>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Pieces</th>
               </tr>
             </thead>
             <tbody id="tableBody"></tbody>
@@ -148,119 +184,7 @@
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
   <script src="./assets/js/cart.js"></script>
-  <script>
-    // Custom object/class RaffleEntry
-    // constructor are the name, email, and phone values
-    function RaffleEntry(name, email, phone) {
-      this.name = name;
-      this.email = email;
-      this.phone = phone;
-    }
-
-    // Creates a RaffleEntry
-    function createRaffleEntry() {
-      // Variables for the current values in the form inputs
-      var currentName = document.getElementById('formName').value;
-      var currentEmail = document.getElementById('formEmail').value;
-      var currentPhone = document.getElementById('formPhone').value;
-
-      // Creates a new instantiation of the RaffleEntry class/object
-      var entry = new RaffleEntry(currentName, currentEmail, currentPhone);
-
-      // Use addEntryToTable function to add entries to global entries variable
-      addEntryToTable(entry);
-    }
-
-    // Takes an entry parameter and adds it to the end of the global entries variable
-    function addEntryToTable(raffleEntry) {
-      if(window.hasErrors) {
-        return;
-      }
-      var tableBody = document.getElementById('tableBody');
-
-      // If the first child in the #tableBody has an innerText of 'No entries' remove that node and replace with raffle entry
-      if(tableBody.children[0].innerText == 'No entries...') {
-        tableBody.removeChild(tableBody.children[0]);
-      }
-
-      // Creates a table row <tr> and adds classes for styling
-      var tableRow = document.createElement('tr');
-          tableRow.className = 'border-b border-gray-400';
-
-      // Sets a variable from the length/size of all our properties in our custom object (RaffleEntry)
-      var raffleEntryPropertyCount = Object.keys(raffleEntry).length;
-
-      // Loop through each property (name, email, phone) in the custom object of RaffleEntry
-      for(var i = 0; i < raffleEntryPropertyCount; i++) {
-        // Create a table data <td> and adds classes for styling
-        var tableData = document.createElement('td');
-            tableData.className = 'px-6 py-4 whitespace-no-wrap';
-              
-        // Create an inner div inside the table data cell and add classes for styling
-        var innerDiv = document.createElement('div');
-            innerDiv.className = 'flex items-center text-sm leading-text-gray-800';
-        
-        // Gets the value of our custom object RaffleEntry at the index and sets it to variable value
-        var value = Object.values(raffleEntry)[i];
-
-        // Set the innerText to our value
-        innerDiv.innerText = value;
-
-        // Append the current container <div> to the <td>
-        tableData.appendChild(innerDiv);
-
-        // Append the current <td> to the row for each iteration
-        tableRow.appendChild(tableData)
-      }
-
-      // Lastly append all of our <tr> to the <tbody>
-      tableBody.appendChild(tableRow);
-    }
-
-  // Adds button event listener
-  function addListeners() {
-    // Create variable for submit button
-    var submitBtn = document.getElementById('submitBtn');
-    submitBtn.addEventListener('click', createRaffleEntry, false);
-  }
-
-  // Adds button attach
-  function attachEvents() {
-    var submitBtn = document.getElementById('submitBtn');
-    submitBtn.attachEvent('onclick', createRaffleEntry);
-  }
-
-  // A function that displays No entries upon load so we don't have an ugly/empty table
-  function checkDisplay() {
-    // Grabs the current #tableBody node
-    var tbody = document.getElementById('tableBody');
-
-    // Check if the tbody children NodeList is less than 1
-    if(tbody.children.length < 1) {
-      // Creates a table row with No entries innerHTML
-      var tr = document.createElement('tr');
-      tr.innerHTML = '<td colspan="3" class="text-center">No entries...</td>';
-      //Appends the <tr> to the <tbody>
-      tbody.appendChild(tr)
-    }
-  }
-
-  // Add event listeners to button on load if not IE8
-  if(window.addEventListener) {
-    window.addEventListener('load', function() {
-      // Add event listners function
-      addListeners()
-      // Also runs the checkDisplay function on load
-      checkDisplay()
-    }, false);
-  } else {
-    window.attachEvent('onload', function() {
-      // Attachs the attachEvents for IE8 support
-      attachEvents()
-      // Also runs the checkDisplay function in IE8
-      checkDisplay()
-    });
-  }
-  </script>
+  <!-- Moved to charity.js -->
+  <script src="./assets/js/charity.js"></script>
 </body>
 </html>
