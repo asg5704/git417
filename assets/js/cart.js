@@ -1,6 +1,56 @@
-/*
-  This is code carried over from the GIT417 course
-*/
+// Types object that contains validation requirements
+var validation = {
+  // validate function with default string parameter and regex that checks for
+  /*
+    Email validation is super complicated as the number of IANA top-level domains increases
+    I try to do as little validation to emails as possible by checking 3 things:
+    1.) Empty email field
+    2.) Minimum amount of characters (3) ex. a@a.com
+    And 3.) Following a simple regex formula that follows this pattern _@_._
+  */
+  'formEmail': {
+    minimumChars: 6,
+    validate: str => validateWithRegex(str, /[^\s@]+@[^\s@]+\.[^\s@]+/)
+  },
+  // validate function with default string parameter and regex that allows +, . (dots), or dashes for numbers
+  'formPhone': {
+    minimumChars: 10,
+    validate: str => validateWithRegex(str, /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/g)
+  },
+  // validate function with default string parameter and regex that ensures there are only a combination of upper & lowercase letters, hyphens, and/or apostrophes
+  'formName': {
+    minimumChars: 3,
+    validate: str => validateWithRegex(str, /^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*/g)
+  }
+};
+
+// Validates with regex
+function validateWithRegex(str = '', regex) {
+  // Return the value from the regex .test method
+  return regex.test(str)
+}
+
+function validateInputField(type, minimumChars, target) {
+  // Slices out the `form` from the field Id name
+  var fieldName = `${type.slice(4, type.length)}`;
+
+  // If values are blank throw an error
+  if(target.value === '') {
+    throw new Error(`${fieldName} field cannot be left blank`);
+  }
+
+  // If value is not above minimum character count throw an error
+  if(target.value.length < minimumChars) {
+    throw new Error(`${fieldName} requires a minimum of ${minimumChars} characters`);
+  }
+
+  // Validates a specific regex for the type
+  if(validation[type].validate(target.value)) {
+    return true;
+  } else {
+    throw new Error(`${fieldName} field is invalid`)
+  }
+}
 
 // Function used to validate the form
 function validateForm(event) {
@@ -12,35 +62,14 @@ function validateForm(event) {
 
   // Try/catch handles errors
   try {
-    // Creates variables to grab the values of our inputs
-    var formName = document.getElementById('formName');
-    var formEmail = document.getElementById('formEmail');
-    var formPhone = document.getElementById('formPhone');
+    // Creates an array to grab the input's IDs
+    var fields = ['formName', 'formEmail', 'formPhone'];
 
-    // Checks if both values are blank
-    if(formName.value == '' && formEmail.value == '' && formPhone.value == '') {
-      throw 'Fields cannot be left blank';
-    }
+    // Loop through each form value and attempt to validate
+    fields.forEach(function(fieldId) {
+      return validateInputField(fieldId, validation[fieldId].minimumChars, document.getElementById(fieldId))
+    })
 
-    // Checks if formName value is blank
-    if(formName.value == '') {
-      throw 'Name field cannot be left blank';
-    }
-
-    // Checks if formEmail value is blank
-    if(formEmail.value == '') {
-      throw 'Email field cannot be left blank';
-    }
-
-    // Checks if formEmail value is blank
-    if(formPhone.value == '') {
-      throw 'Phone field cannot be left blank';
-    }
-
-    // Uses built-in method checkValidity to check for valid email
-    if(!formEmail.checkValidity()) {
-      throw 'Email is not valid';
-    }
   } catch(err) {
     // Sets isFormValid to true because there are errors
     isFormInvalid = true;

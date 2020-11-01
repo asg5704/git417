@@ -7,7 +7,7 @@
       this.pieces = pieces;
     }
 
-    // Function that checks if
+    // Function that creates a unique array from a given array
     function createUniqueArray(arr) {
       // Instantiate an empty array
       var uniqueArr = [];
