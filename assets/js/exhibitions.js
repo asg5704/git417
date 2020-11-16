@@ -1,16 +1,16 @@
-
+// Initialize function creates an HTTP request on load with default options
 function initialize () {
   const apiKey = `1a1872a1-9c00-4650-8d3a-6dc6be211b16`;
   const url = `https://api.harvardartmuseums.org/exhibition?apikey=${apiKey}&status=current`;
 
-  // Creates a Fetch request
+  // Uses the Fetch API to create a Promise-based HTTP request with url & default options
   fetch(url, {
     method: 'GET',
     type: "cors"
   })
-  // Transforms response data into usable JSON format
+  // Uses callback method to transform response data into usable JSON format
   .then(response => response.json())
-  // Takes the formatted JSON data and generates our results
+  // Uses callback method to take the formatted JSON data and invokes the generateResults method
   .then(data => generateResults(data));
 }
 
@@ -41,7 +41,7 @@ function generateResults({ records }) {
   })
 }
 
-// Add event listeners to button on load if not IE8
+// Add event listeners window object on load if not IE8
 if(window.addEventListener) {
   window.addEventListener('load', initialize, false);
 } else {
