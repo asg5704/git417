@@ -6,7 +6,7 @@ function initialize () {
   // Uses the Fetch API to create a Promise-based HTTP request with url & default options
   fetch(url, {
     method: 'GET',
-    type: "cors"
+    mode: "cors"
   })
   // Uses callback method to transform response data into usable JSON format
   .then(response => response.json())
