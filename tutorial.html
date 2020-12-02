@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alexander Garcia" />
     <meta name="description" content="The Alexander Gallery - Fine-art Gallery" />
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
-    <title>The Alexander Gallery - Home</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script>
+    <title>The Alexander Gallery - JS Tutorial</title>
   </head>
   <body class="md:flex flex-col md:flex-row md:min-h-screen w-full bg-gray-100 relative">
     <aside class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 flex-shrink-0">
@@ -19,247 +21,309 @@
         <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="art.html">Exhibitions</a>
         <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tickets.html">Visitor Information</a>
         <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="cart.html">Purchase Art</a>
-        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="security.html">Web Safety</a>
-        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tutorial.html">JavaScript Tutorial</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="security.html">Web Safety</a>
+        <a class="block px-4 py-2 m-2 text-sm font-semibold text-gray-200 bg-gray-900 rounded-lg  hover:text-gray-200 focus:text-gray-200 hover:bg-gray-900 focus:bg-gray-900 focus:outline-none focus:shadow-outline" href="tutorial.html">Tutorial</a>
       </nav>
     </aside>
     <main class="m-8 h-full w-full m-px-40">
-      <section class="max-w-4xl">
-        <h2 class="text-2xl text-gray-700">JavaScript Tutorial</h2>
-        <p>In this tutorial, I will show you how you how to create our own JavaScript functions as well as utilize some built-in functions (called methods).  One of the best places to learn the capabilities of JavaScript and the web is the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">Mozilla Development Network</a>(MDN).  It provides a plethora amount of knowledge about Web APIs and how to use mostly every built-in function in JavaScript.</p>
-        <div class="container flex justify-between mt-16 flex-col">
-          <h3 class="font-black text-2xl">Introduction to Functions</h3>
-          <p>Functions are the building blocks of JavaScript.  Simply put they are procedures that perform a task. But let's breakdown even further how we perceive a function.</p>
-          <pre>
-            <code class="language-javascript">
-              /* Lets Breakdown how to create our very first function */
-
-              function name(parameters) {
-                statements;
-              }
-            </code>
-          </pre>
-          <ul>
-            <li><strong>function</strong> &mdash; This is a JavaScript reserved keyword used to ensure JavaScript knows we want to create a function.</li>
-            <li><strong>name</strong> &mdash; This is the name we determine that describes what the function is doing.</li>
-            <li><strong>parameters</strong> &mdash; There are unlimited amount of parameters or <strong>arguments*</strong> you can have in your function.  These are the name of the values you pass to your function. *arguments is also a reserved word in JavaScript</li>
-            <li><strong>statements</strong> &mdash; Statements are the steps or procedures your JavaScript code will run.</li>
-          </ul>
-          <p class="mt-4">I know what you're thinking... that's cool but how do I use it.  Let's take a look at how we can write a function to multiply three numbers together.</p>
-          <pre>
-            <code>
-              // Previous way of multiplying numbers together
-              var total = 5 * 35 * 2;
-
-              // Step 1. Create the multiply function
-              function multiply(x, y, z) {
-                var total = x * y * z;
-                console.log('Total: ', total);
-                return total;
-              }
-
-              // Now when we call the multiply function
-              multiply(5, 35, 2);
-              // This will log -> Total: 350
-
-              // How is this helpful you might think? This allows our function to be more dynamic
-              // We could also call multiple iterations of our function
-              multiply(1, 1, 1)
-              // This will log -> Total: 1
-              multiply(2, 10, 2)
-              // This will log -> Total: 40
-
-              // As a default if there is no `return` in a function it will automatically return undefined.
-              // So if we want to be able to use these values we must specify a value to return
-            </code>
-          </pre>
+      <section>
+        <div class="max-w-4xl">
+          <h2 class="font-bold text-2xl">JavaScript Tutorial</h2>
+          <p class="mb-8">One of my favorite topics for JavaScript is the Fetch API.  This API is a vast improvement to the old way of doing requests via XMLHttpRequests (XHR).  By learning how use `fetch` it will enable you to learn about complex JavaScript topics like Promises and callbacks in addition to the Fetch API.</p>
+          <h2 class="font-bold text-2xl">What is Fetch?</h2>
+          <p class="mb-8">According to MDN (Mozilla Developer Network), the <a class="text-blue-600" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> is an interface created for fetching resources across the network.  It provides a more powerful and flexible feature set.</p>
+          <p class="mb-8">To keep this relatively simple, the Fetch API is based off what is called a <em>Promise</em>.</p>
         </div>
-        <div class="container flex flex-col justify-start mt-8">
-          <h3 class="font-black text-2xl">Let's look at some of JavaScripts built-in functions</h3>
-          <p>I highly encourage you to take a look at the MDN website to see more ways to interact with these functions.  We're going to take a look at a few simple functions on the DOM.</p>
-          <pre class="mt-4">
-            <code class="language-javascript">
-              // First let's take a look at an easy one for our String data type
-              // Step 1. Create a variable called `ourString` and give it a value
-              var ourString = "hello world";
-
-              // Step 2. Utilizing `ourString` with a period `ourString.` in our
-              // Chrome Developer Tools we can see a whole bunch of neat functions
-              // called methods.  Let's try using the .toUpperCase method.
-              ourString.toUpperCase();
-              // Output: This will log -> 'HELLO WORLD';
-
-              // Step 3. Let's take a look at some other methods.
-              ourString.repeat(3);
-              // Output: 'hello worldhello worldhello world'
-            </code>
-          </pre>
-          <p class="mt-4">Let's take a look at a real-world use case: a scroll to top button.</p>
-          <pre>
-            <code>
-            // First we'll look at & break down `window.scrollTo`
-            /* The method is defined like below
-            ** In one way we can pass the x and y-coordinate as two separate parameters
-               window.scrollTo(x-coord, y-coord);
-
-               In another way, the scrollTo also takes a single object as a parameter
-               window.scrollTo(options)
-            */
-            // We know we have either 2 parameters (xCoordinate, yCoordinate)
-            </code>
-            <code class="html">
-            // Let's create a scroll to top button
-            // Step 1. Create a button with an id of scrollToTop in your HTML
-            <....>
-            &lt;button id="scrollToTop"&gt;Scroll to Top&lt;/button&gt;
-            <....>
-            </code>
-            <code>
-            // Step 2. Select the button by id
-            document.getElementById('scrollToTop')
-              // add an addEventListener for a click event
-              .addEventListener('click', function() {
-                // X-coordinate is the first parameter
-                // Y-coordinate is the second parameter
-
-                // Call the method/function with the parameters
-                window.scrollTo(0, 0);
-
-            }, false)
-
-            // This absolutely works as intended but the animation feels too fast
-            // Let's try it with using an Object as our parameter
-            // Step 3. Select the button and add an addEventListener
-            document.getElementById('scrollToTop')
-              .addEventListener('click', function() {
-
-                // create an options variable (look at MDN for available options)
-                var options = { top: 0, behavior: 'smooth' };
-
-                // Call the method/function
-                window.scrollTo(options);
-
-            }, false)
-
-            // Step 4. Click on the button and watch it animate
-            // There is a sample scroll to top button at the bottom of this page
-            </code>
-          </pre>
-        </div>
-      </section>
-      <div class="container flex flex-col justify-start mt-8">
-        <h3 class="font-black text-2xl">Let's build our own</h3>
-        <p>Problem: A teacher tasks you, a Teaching Assistant, with dropping the lowest quiz grade and getting the average of the top two quiz scores.</p>
-        <p>Task: Create a function that drops the lowest score and returns the average of the top two quiz scores.</p>
-        <p>Hmm.. that seems like a lot. We will break it down into small chunks and use some built-in functions/methods to create our function.</p>
-        <pre>
-          <code>
-            // This is our array of students
-            var studentList = [
-              {
-                name: 'Bob Jones',
-                grades: [75, 80, 90]
-              },
-              {
-                name: 'Jim James',
-                grades: [55, 100, 90]
-              },
-              {
-                name: 'Eli Jones',
-                grades: [75, 100, 90]
-              }
-            ];
-
-            // This is the function we will use to get the student's
-            // quiz average
-            function getStudentQuizAverage(student) {
-              // Step 1. Create variables to store student name & grades array
-              // First we grab the students name
-              var name = student.name;
-              // Next we grab the students grades
-              var grades = student.grades
-
-              // Step 2. We happened to look on MDN under JavaScript Math and
-              // found a Math.min() method that takes integer parameters
-              // and finds the lowest one.
-              var worstQuizGrade = Math.min(grades[0], grades[1], grades[2]);
-
-              // Step 3. We create a new array called `newGrades` to
-              // ensure we don't mess with the old grades just
-              // in case the teacher changes their mind later on.
-              var newGrades = [];
-
-              // Step 4. We will loop through all of our grades and
-              // if we find don't find our worstQuizGrade
-              // we'll add it to our newGrades array
-              for(var i = 0; i < grades.length; i++) {
-
-                // Step 5. We will check if the grades at the index match
-                // our worstQuizGrade.  If it doesn't match, we
-                // will add that grade to our newGrade array using .push
-                if(grades[i] != worstQuizGrade) {
-                  newGrades.push(grades[i]);
-                }
-              }
-
-              // Step. 6 Here we will determine our finalGrade which is just
-              // The newGrades at each index divided by 2
-              var finalGrade = (newGrades[0] + newGrades[1]) / 2;
-
-              // Step 7. We print out the finalGrade to see in the console
-              console.log(name + ' Quiz score Average: ' + finalGrade + '%\n')
-
-              // Step 8. We return the finalGrade to add to our new array
-              return name + ' Quiz score Average: ' + finalGrade + '%\n';
-            }
-
-            // Step 9. Now we can loop through the studentList and print out the grade
-            // for each student by calling the getStudentQuizAverage
-            for(var i = 0; i < studentList.length; i++) {
-              getStudentQuizAverage(studentList[i])
-            }
-            // Output =>
-            // Bob Jones Quiz score Average: 85%
-            // Jim James Quiz score Average: 95%
-            // Eli Jones Quiz score Average: 95%
-
-
-            // ** Finally. If we want to create a new updated list of student
-            // quiz grades we can first create a variable `updatedStudentList`
-            // and loop through the old student list and push the values there.
-            var updatedStudentList = [];
-            for(var i = 0; i < studentList.length; i++) {
-              // For clarity we can break this down
-              // updatedList.push(value) => Pushes/Adds the value to the end of an array
-              // getStudentQuizAverage(student) => Returns the `Student name Quiz Score..` string
-
-              updatedStudentList.push(getStudentQuizAverage(studentList[i]));
-            }
-            // Output =>
-            // Bob Jones Quiz score Average: 85%
-            // Jim James Quiz score Average: 95%
-            // Eli Jones Quiz score Average: 95%
-
-            console.log(updatedStudentList);
-            // Output =>
-            // [Bob Jones Quiz score Average: 85%, Jim James Quiz score Average: 95%,Eli Jones Quiz score Average: 95%]
+        <pre class="max-w-6xl">
+          <code class="js">
+            // This is an example of a Fetch request
+            fetch('https://jsonplaceholder.typicode.com/posts/') // URL
+              .then(response => response.json()) // Transform response into a JSON
+              .then(json => console.log(json)) // Data is output to the console
           </code>
         </pre>
-      </div>
-      <div class="w-full h-screen flex flex-col justify-end">
-        <button id="scrollToTop">Scroll to Top</button>
-      </div>
+        <div class="max-w-4xl">
+          <p class="mb-8">Before we can dive into using the Fetch API we have to understand how Promises work.</p>
+          <h2 class="font-bold text-2xl">What is a Promise?</h2>
+          <p class="my-8">A Promise is exactly what it sounds like, it's an agreement between the requestor (browser/user requesting said item) and the requested item (a server/API, a resource, etc.) and can either be resolved (we get the data) or it's rejected (something went wrong)</p>
+          <p class="mb-8"><strong class="uppercase font-bold">TL/DR;</strong> I generally like to explain Promises like ordering a pizza. We call up to Domino's to order a pizza. After we pay for the order we receive a <em>Promise</em> that they will deliver our order because we don't know when they will deliver our food.</p>
+          <p class="mb-8">From there, only two things can happen</p>
+          <ol class="pl-8 mb-8">
+            <li>Delivery driver arrives and we get our pizza (Hooray!) - Our Promise is <strong>resolved</strong></li>
+            <li>Something went wrong like the delivery driver got lost trying to deliver, or crashed. - Our Promise is <strong>rejected</strong></li>
+          </ol>
+          <p class="mb-8">Now we are going to dive into some code.</p>
+          <h2 class="font-bold text-2xl">Breaking down the Fetch method</h2>
+          <p class="mb-8">Our Fetch request takes 2 parameters: <em>a resource</em> and <em>an initialization object</em></p>
+        </div>
+        <pre class="max-w-6xl">
+          <code class="js">
+            // The URL / API we want data from
+            let url = 'https://jsonplaceholder.typicode.com/posts';
+            
+            // Initialization object, this won't be used for our purposes
+            // but I want you to understand all the possible ways we can initialize our request.
+
+            let init = {
+              method: 'GET', // Can be any HTTP request HEAD, GET, POST, PUT, DELETE, etc
+              headers: {}, // Generally created via a new Headers()
+              body: null, // This would be the data you would update on a server (ie. Updating your user profile)
+              mode: 'cors', // Extremely powerful, we can set cors, no-cors, or same-origin
+              credentials: '', // omit, same-origin, include; self-explanatory usually for protected resources
+              cache: 'no-cache', // Good for caching static asset requests and web performance
+              redirect: 'follow', // follow, error, manual; self-explanatory usually used with authentication
+              referrer: null, // Extremely useful from a security standpoint
+              referrerPolicy: null, // Basically allows only certain servers to be referred to the service
+              integrity: '', // For security
+              keepalive: '', // Allows the request to go beyond the page request (ie. User navigates to another page)
+              signal: null, // Allows you to cancel a request if a user navigates away
+            }
+
+            // 1. We take our `url` variable and our `init` to create a Fetch request
+            fetch(url, init)
+
+            /*
+             * In comparison, this is a lot better developer experience than the previous XHR
+             */
+
+              var request = new XMLHttpRequests();
+              request.open = ('GET', url)
+              request.send = ...
+              request.onload = ...
+
+            /*
+             * For example, the Fetch method auto-defaults to a 'GET' request so we don't have
+             * to explicitly set our HTTP method in our `init` object
+             */
+
+            // 2. Since the 2nd parameter is optional and we only have an empty object let's remove it for now.
+            // Our fetch method now becomes:
+            fetch(url)
+          </code>
+        </pre>
+        <div class="max-w-4xl">
+          <h2 class="font-bold text-2xl">Okay so what happens now?</h2>
+          <p class="mb-8">Well in order to get our data we have to provide 2-3 callbacks (also called 'then-ables').  It's a 2-3 step process because we are using Promises, callbacks, and try/catches.</p>
+        </div>
+        <pre class="max-w-6xl">
+          <code class="js">
+            // 3. Adding the first callback
+            // The first callback will return a Response object (just like an XHR).
+            fetch(url)
+              .then(response => {
+                // Our callback provides us with one parameter. This can be named anything you like but for clarity's
+                // sake I've named it response since it returns the `Response` object
+                console.log(response);
+
+                // When we log the `Response` it will look like this:
+                Response: {
+                  body: ReadableStream
+                  bodyUsed: true
+                  headers: Headers {}
+                  ok: true
+                  redirected: false
+                  status: 200
+                  statusText: ""
+                  type: "cors"
+                  url: "https://jsonplaceholder.typicode.com/posts"
+                }
+      
+              })
+          </code>
+        </pre>
+        <div class="max-w-4xl">
+          <p class="mb-8">We can see that our Fetch request was successful by verifying both the `status` and `ok` property on our Response object. Unfortunately, we are not done yet because we don't have data yet.</p>
+        </div>
+        <pre class="max-w-6xl">
+          <code class="js">
+            // 3. Adding the first callback
+            // The first callback will return a Response object (just like an XHR).
+            fetch(url)
+              .then(response => {
+                // Our callback provides us with one parameter. This can be named anything you like but for clarity's
+                // sake I've named it response since it returns the `Response` object
+                console.log(response);
+
+                /*
+                  4. On our `Response` object we have a method that will return our data in a workable format - JSON.
+                  However, this method - .json() will return a `Promise`... do you see the trend of why understanding
+                  Promises is important?
+                  
+                  So how do we resolve this Promise to turn our data into JSON format? Easy. We return the repsonse
+                  and add another callback to resolve that Promise.
+                */
+                return response.json() // Becomes a `Promise` to transform data into JSON format
+              })
+
+
+            // 5. The above code now becomes
+            fetch(url)
+              // Remember that arrow functions have implicit returns so we can write it this way or like the above
+              .then(response => response.json())
+              .then(data => {
+                // Do something with our data now
+                console.log(data); // Should return an Array [100] of objects
+              })
+          </code>
+        </pre>
+        <div class="max-w-4xl">
+          <h2 class="font-bold text-2xl">How do we know if a request isn't successful?</h2>
+          <p class="mb-8">Once again the Fetch API comes to the rescue.  Now with previous XHR's we would have to wrap it in a try/catch.  Which we can absolutely do in our fetch request however we are provided with a `catch` callback which works similar to the try/catch but it is used for Promise-based requests.</p>
+        </div>
+        <pre class="max-w-6xl">
+          <code class="js">
+            // 6. Our code with complete error-checking now transforms into this:
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                // Do something with our data now
+              })
+              .catch(error => console.log(`Error: ${error}`));
+          </code>
+        </pre>
+        <div class="max-w-4xl">
+          <h2 class="font-bold text-2xl">Things to note</h2>
+          <p class="mb-8">Hopefully you all picked up on the structure of callbacks... If you did awesome great job!  If you didn't that's okay, it took me a few times to understand why my code wasn't working.</p>
+        </div>
+        <pre class="max-w-6xl">
+          <code class="js">
+            // With callbacks it is important to note that if you terminate them with a semicolon `;` the code will
+            // stop executing wherever you put the semi-colon.
+            fetch(url);
+              // The code below can't be reached because we stopped the Promise from resolving itself
+              .then(response => response.json())
+
+
+            // Similarly the .catch callback is not reachable because were terminate the Promise resolving
+            // after we log out our data.
+            fetch(url)
+              .then(response => response.json())
+              .then(data => console.log(data));
+              .catch(err => console.error(err))
+          </code>
+        </pre>
+        <div class="max-w-4xl">
+          <h2 class="font-bold text-2xl">Hooray!</h2>
+          <p class="mb-8">With this tutorial you now understand the Fetch API, Promises, callbacks and can use them at your leisure.  Below is a playground with the code in the script tag.</p>
+        </div>
+      </section>
+      <section>
+        <h2 class="font-bold text-2xl">Fetch Playground</h2>
+        <pre class="max-w-6xl">
+          <code>
+            // We want to get the top ten posts from our API and list them out as links.
+
+            // The URL / API we want data from
+            let url = 'https://jsonplaceholder.typicode.com/posts';
+
+            // Our fetch complete with error-checking
+            fetch(url)
+              // Returns our response to JSON-format via a Promise
+              .then(response => response.json())
+
+              // We have our data, now let's do something with it
+              .then(data => {
+                // Get the top 10 titles results
+                let transformedData = data.slice(0, 10);
+              
+                // Loop thru each transformedData grab the `title` and append it to the ordered list
+                transformedData
+                  .forEach(({ title }) => {
+                    // Create list transformedData
+                    const li = document.createElement('li');
+                    li.innerText = title;
+
+                    // Append child to 
+                    document.getElementById('dynamic-content')
+                      .appendChild(li)
+                  })
+                
+              })
+              .catch(error => {
+                console.log('Error', error)
+              })
+
+
+              
+              // If it were me refactoring this, I'd strip out the comments & put the transformation into it's
+              // own function cutting it down to 20 lines of JS.
+              
+              fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => response.json())
+                .then(data => generateList(data))
+                .catch(error => handleError(error))
+
+              function generateList(data) {
+                let transformedData = data.slice(0, 10);
+              
+                transformedData
+                  .forEach(({ title }) => {
+                    const li = document.createElement('li');
+                    li.innerText = title;
+
+                    document.getElementById('dynamic-content').appendChild(li)
+                  });
+              }
+
+              function handleError(err) {
+                console.error(err);
+                return;
+              }
+          </code>
+        </pre>
+        <h2 class="font-bold text-2xl">Top 10 Posts (dynamically generated from our API)</h2>
+        <ul id="dynamic-content" class="list-inside list-disc pl-4"></ul>
+        <!-- Dynamically generated content-->
+      </section>
       <footer class="text-center mt-4">
         <small>The Alexander Gallery &copy; 2020</small>
       </footer>
     </main>
   <script src="./assets/js/modernizr.custom.05819.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
   <script>
-    hljs.initHighlightingOnLoad();
-    document.getElementById('scrollToTop').addEventListener('click', function() {
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    }, false)
+    // Creates the fetch to show the example
+    const initialize = () => {
+      // Checks if HighlightJS is sourced & generates syntax highlighting
+      if(hljs) {
+        hljs.initHighlighting();
+      }
+
+      // The URL / API we want data from
+      let url = 'https://jsonplaceholder.typicode.com/posts';
+
+      // Our fetch complete with error-checking
+      fetch(url)
+        // Returns our response to JSON-format via a Promise
+        .then(response => response.json())
+
+        // We have our data, now let's do something with it
+        .then(data => {
+          // Get the top 10 titles results
+          let transformedData = data.slice(0, 10);
+         
+          // Loop thru each transformedData grab the `title` and append it to the ordered list
+          transformedData
+            .forEach(({ title }) => {
+              // Create list transformedData
+              const li = document.createElement('li');
+              li.innerText = title;
+
+              // Append child to 
+              document.getElementById('dynamic-content')
+                .appendChild(li)
+            })
+        })
+        .catch(error => {
+          console.log('Error', error)
+        })
+    }
+
+    // Add event listeners to button on load if not IE8
+    if(window.addEventListener) {
+      window.addEventListener('load', initialize, false);
+    } else {
+      window.attachEvent('onload', initialize);
+    }
   </script>
 </body>
 </html>
